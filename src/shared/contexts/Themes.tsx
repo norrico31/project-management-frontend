@@ -1,7 +1,8 @@
 import { useState, createContext, useContext, useMemo, ReactNode } from "react";
 import { ThemeProvider, createTheme } from "@mui/material/styles";
+import { CssBaseline } from "@mui/material";
 
-export const themes = (mode: DarkMode) => ({
+export const tokens = (mode: DarkMode) => ({
     ...(mode === 'dark') ? {
         grey: {
             100: "#e0e0e0",
@@ -118,7 +119,7 @@ export const themes = (mode: DarkMode) => ({
 })
 
 export const themeSettings = (mode: DarkMode) => {
-    const colors = themes(mode)
+    const colors = tokens(mode)
 
     return {
         palette: {
@@ -192,6 +193,8 @@ const ColorModeContext = createContext({
 
 export const useThemeCtx = () => useContext(ColorModeContext)
 
+// TODO: save dark mode to localStorage or add keyProp to user api
+
 function useTheme() {
     const [mode, setMode] = useState<DarkMode>("dark");
 
@@ -211,6 +214,7 @@ export default function MuiThemeProvider({ children }: { children: ReactNode }) 
     const [theme, toggleColorMode] = useTheme()
     return <ColorModeContext.Provider value={{ toggleColorMode }}>
         <ThemeProvider theme={theme}>
+            <CssBaseline />
             {children}
         </ThemeProvider>
     </ColorModeContext.Provider>
