@@ -1,13 +1,7 @@
-import { useThemeCtx } from './shared/contexts/Themes'
-import Layout from './shared/components/Layout/Layout'
+import React from 'react'
 
-function App() {
-  const { toggleColorMode } = useThemeCtx()
+export default function App() {
   return (
-    <>
-      <Layout />
-    </>
+    <div>App</div>
   )
 }
-
-export default App
