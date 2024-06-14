@@ -3,11 +3,13 @@ import { MdMenu } from 'react-icons/md'
 
 export default function Topbar({ onClick }: { onClick: () => void }) {
     return (
-        <header
-            onClick={onClick}
-            style={{ outline: '1px solid red', padding: '10px' }}
-        >
-            <MdMenu size={25} />
+        <header className='w-100 p-4 bg-white shadow-sm'>
+            <div
+                onClick={onClick}
+            >
+
+                <MdMenu size={25} />
+            </div>
         </header>
     )
 }

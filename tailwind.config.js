@@ -8,6 +8,8 @@ export default {
       },
     },
   },
-  plugins: [import("tailwind-scrollbar")],
+  // darkMode: 'class',
+  // eslint-disable-next-line no-undef
+  plugins: [require("tailwind-scrollbar")],
 }
 
