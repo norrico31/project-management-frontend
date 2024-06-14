@@ -54,7 +54,7 @@ const subMenusList = [
     {
         name: "build",
         icon: RiBuilding3Line,
-        menus: ["auth", "app settings", "stroage", "hosting"],
+        menus: ["auth", "app settings", "storage", "hosting"],
     },
     {
         name: "analytics",
@@ -116,9 +116,9 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                 },
             },
         }, [isTabletMid])
-    console.log(isTabletMid)
+
     return (
-        <div>
+        <div className=''>
             <div
                 onClick={() => setOpen(false)}
                 className={`md:hidden fixed inset-0 max-h-screen z-[998] ${open ? "block" : "hidden"
@@ -129,7 +129,7 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                 variants={Nav_animation}
                 initial={{ x: isTabletMid ? -250 : 0 }}
                 animate={open ? "open" : "closed"}
-                className="bg-white text-gray shadow-xl z-[999] overflow-hidden md:relative fixed h-screen "
+                className="bg-white dark:bg-neutral-900 dark:text-white text-gray shadow-xl z-[999] overflow-hidden md:relative fixed h-screen "
             >
                 <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
                     {/* <img
@@ -180,9 +180,9 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                             </NavLink>
                         </li>
                         <li>
-                            <NavLink to={"/stroage"} className="link">
+                            <NavLink to={"/storage"} className="link">
                                 <HiOutlineDatabase size={23} className="min-w-max" />
-                                Stroage
+                                storage
                             </NavLink>
                         </li>
 
