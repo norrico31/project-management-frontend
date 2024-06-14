@@ -5,14 +5,16 @@ import { IoIosArrowBack } from "react-icons/io";
 import { SlSettings } from "react-icons/sl";
 import { AiOutlineAppstore } from "react-icons/ai";
 import { BsPerson } from "react-icons/bs";
-import { HiOutlineDatabase } from "react-icons/hi";
 import { TbReportAnalytics } from "react-icons/tb";
 import { RiBuilding3Line } from "react-icons/ri";
 import { IoIosArrowDown } from "react-icons/io";
+import { RiAdminLine } from "react-icons/ri";
 
 function SubMenu({ data }: { data: typeof subMenusList[0] }) {
     const { pathname } = useLocation();
-    const [subMenuOpen, setSubMenuOpen] = useState(false);
+    const [subMenuOpen, setSubMenuOpen] = useState(pathname.includes(data.name) ? true : false);
+    // console.log(pathname)
+    console.log(data.name)
     return (
         <>
             <li
@@ -39,7 +41,7 @@ function SubMenu({ data }: { data: typeof subMenusList[0] }) {
                     <li key={menu}>
                         <NavLink
                             to={`/${data.name}/${menu}`}
-                            className="link !bg-transparent capitalize"
+                            className="link capitalize"
                         >
                             {menu}
                         </NavLink>
@@ -52,13 +54,13 @@ function SubMenu({ data }: { data: typeof subMenusList[0] }) {
 
 const subMenusList = [
     {
-        name: "build",
-        icon: RiBuilding3Line,
+        name: "system settings",
+        icon: SlSettings,
         menus: ["auth", "app settings", "storage", "hosting"],
     },
     {
-        name: "analytics",
-        icon: TbReportAnalytics,
+        name: "admin settings",
+        icon: RiAdminLine,
         menus: ["dashboard", "realtime", "events"],
     },
 ]
@@ -170,26 +172,26 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                         <li>
                             <NavLink to={"/"} className="link">
                                 <AiOutlineAppstore size={23} className="min-w-max" />
-                                All Apps
+                                Projects
                             </NavLink>
                         </li>
                         <li>
                             <NavLink to={"/authentication"} className="link">
-                                <BsPerson size={23} className="min-w-max" />
-                                Authentication
+                                <RiBuilding3Line size={23} className="min-w-max" />
+                                Backlogs
                             </NavLink>
                         </li>
-                        <li>
+                        {/* <li>
                             <NavLink to={"/storage"} className="link">
                                 <HiOutlineDatabase size={23} className="min-w-max" />
                                 storage
                             </NavLink>
-                        </li>
+                        </li> */}
 
                         {(open || isTabletMid) && (
                             <div className="border-y py-5 border-slate-300 ">
                                 <small className="pl-3 text-slate-500 inline-block mb-2">
-                                    Product categories
+                                    Settings
                                 </small>
                                 {subMenusList?.map((menu) => (
                                     <div key={menu.name} className="flex flex-col gap-1">
@@ -200,12 +202,13 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                         )}
                         <li>
                             <NavLink to={"/settings"} className="link">
-                                <SlSettings size={23} className="min-w-max" />
-                                Settings
+                                {/* <SlSettings size={23} className="min-w-max" /> */}
+                                <BsPerson size={23} className="min-w-max" />
+                                Profile
                             </NavLink>
                         </li>
                     </ul>
-                    {open && (
+                    {/* {open && (
                         <div className="flex-1 text-sm z-50  max-h-48 my-auto  whitespace-pre   w-full  font-medium  ">
                             <div className="flex border-y border-slate-300 p-4 items-center justify-between">
                                 <div>
@@ -217,7 +220,7 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                                 </p>
                             </div>
                         </div>
-                    )}
+                    )} */}
                 </div>
                 {/* <motion.div
                     onClick={() => {

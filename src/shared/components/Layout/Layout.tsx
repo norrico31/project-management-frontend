@@ -1,9 +1,9 @@
-import { useState } from 'react'
+import { useState, ReactNode } from 'react'
 import Sidebar from './Sidebar'
 import Topbar from './Topbar'
 import { useMediaQuery } from 'react-responsive';
 
-export default function Layout() {
+export default function Layout({ children }: { children: ReactNode }) {
     const isTabletMid = useMediaQuery({ query: "(max-width: 768px)" });
     const [open, setOpen] = useState(isTabletMid ? false : true);
     return (
@@ -17,7 +17,7 @@ export default function Layout() {
                 <Topbar onClick={() => setOpen(!open)} />
                 <main className=" h-full p-5 ">
                     <div className='rounded-md dark:bg-white/5 h-full p-5 '>
-                        <h1>ha</h1>
+                        {children}
                     </div>
                 </main>
             </section>
