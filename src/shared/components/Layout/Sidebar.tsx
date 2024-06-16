@@ -52,12 +52,12 @@ function SubMenu({ data }: { data: typeof subMenusList[0] }) {
 
 const subMenusList = [
     {
-        name: "system settings",
+        name: "system-settings",
         icon: SlSettings,
-        menus: ["auth", "app settings", "storage", "hosting"],
+        menus: ["statuses", "app settings", "storage", "hosting"],
     },
     {
-        name: "admin settings",
+        name: "admin-settings",
         icon: RiAdminLine,
         menus: ["dashboard", "realtime", "events"],
     },
@@ -140,7 +140,6 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                     <span className="text-xl whitespace-pre">Bricksoft</span>
                 </div>
                 {isTabletMid && (
-
                     <motion.div
                         onClick={() => {
                             setOpen(!open);
@@ -179,14 +178,7 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                                 Backlogs
                             </NavLink>
                         </li>
-                        {/* <li>
-                            <NavLink to={"/storage"} className="link">
-                                <HiOutlineDatabase size={23} className="min-w-max" />
-                                storage
-                            </NavLink>
-                        </li> */}
-
-                        {(open || isTabletMid) && (
+                        {/* {(open || isTabletMid) && (
                             <div className="border-y py-5 border-slate-300 ">
                                 <small className="pl-3 text-slate-500 inline-block mb-2">
                                     Settings
@@ -197,7 +189,19 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                                     </div>
                                 ))}
                             </div>
-                        )}
+                        )} */}
+                        <div className="border-y py-5 border-slate-300 ">
+                            {(open || isTabletMid) && (
+                                <small className="pl-3 text-slate-500 inline-block mb-2">
+                                    Settings
+                                </small>
+                            )}
+                            {subMenusList?.map((menu) => (
+                                <div key={menu.name} className="flex flex-col gap-1">
+                                    <SubMenu data={menu} />
+                                </div>
+                            ))}
+                        </div>
                         <li>
                             <NavLink to={"/settings"} className="link">
                                 {/* <SlSettings size={23} className="min-w-max" /> */}
@@ -220,28 +224,6 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                         </div>
                     )} */}
                 </div>
-                {/* <motion.div
-                    onClick={() => {
-                        setOpen(!open);
-                    }}
-                    animate={
-                        open
-                            ? {
-                                x: 0,
-                                y: 0,
-                                rotate: 0,
-                            }
-                            : {
-                                x: -10,
-                                y: -200,
-                                rotate: 180,
-                            }
-                    }
-                    transition={{ duration: 0 }}
-                    className="absolute w-fit h-fit md:block z-50 hidden right-2 bottom-3 cursor-pointer"
-                >
-                    <IoIosArrowBack size={25} />
-                </motion.div> */}
             </motion.div>
 
         </div>
