@@ -13,8 +13,6 @@ import { RiAdminLine } from "react-icons/ri";
 function SubMenu({ data }: { data: typeof subMenusList[0] }) {
     const { pathname } = useLocation();
     const [subMenuOpen, setSubMenuOpen] = useState(pathname.includes(data.name) ? true : false);
-    // console.log(pathname)
-    console.log(data.name)
     return (
         <>
             <li
