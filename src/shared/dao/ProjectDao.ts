@@ -1,5 +1,7 @@
 type Projects = unknown[]
 
+type ProjectDao = { message: string; data: Projects }
+
 const APP_URL = import.meta.env.VITE_APP_URL
 const APP_VERSION = import.meta.env.VITE_APP_VERSION
 
@@ -12,14 +14,19 @@ function urlParams(path: string, params?: Record<string, string | number>) {
     return baseUrl.toString()
 }
 
+export const projectsDao = () => {
+    const getProjects = async (signal: AbortSignal) => {
+        const { data } = await fetch<ProjectDao>(urlParams(`/projects`), { signal })
+        return data
+    }
 
-const path = urlParams('/projects')
+    const getProject = async (id: string) => {
+        const { data } = await fetch<ProjectDao>(urlParams(`/projects${id ? ('/' + id) : ''}`))
+        return data
+    }
 
-export const getProjects = async (signal: AbortSignal): Promise<Projects> => {
-    try {
-        const { data } = await fetch<{ message: string; data: Projects }>(path, { signal })
-        return data as Projects
-    } catch (error: unknown) {
-        throw error as ApiError
+    return {
+        getProjects,
+        getProject,
     }
 }
