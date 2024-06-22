@@ -7,7 +7,7 @@ export default function Dashboard() {
         const controller = new AbortController();
         (async () => {
             try {
-                const { data }: { data: unknown } = await fetch(`http://localhost:4000/api/v1/projects`, { signal: controller.signal, headers: { Authorization: token, 'Content-Type': 'application/json' } }).then(res => res.json())
+                const { data }: { data: unknown } = await fetch(`/projects`, { signal: controller.signal, headers: { Authorization: token, 'Content-Type': 'application/json' } }).then(res => res.json())
                 console.log('result: ', data)
             } catch (error) {
                 console.log(error)
