@@ -1,16 +1,17 @@
 import { useEffect } from 'react'
+import { getProjects } from '../shared/dao/ProjectDao';
 
-const token = 'Bearer: eyJhbGciOiJIUzI1NiIsInR5cCI6IkpXVCJ9.eyJ1c2VyX2lkIjoiMjZlNGQyMGQtMDBmOC00N2U4LTg3MmEtNzM2NjMyNzE4NTQzIiwiaWF0IjoxNzE4OTYwNTk5LCJleHAiOjE3MTk1NjUzOTl9.U3M-mN9NrLqnH98WFJdu0u5ZiPAsRbdQBxZGp4Z9_os'
 
 export default function Dashboard() {
     useEffect(() => {
         const controller = new AbortController();
         (async () => {
             try {
-                const { data }: { data: unknown } = await fetch(`/projects`, { signal: controller.signal, headers: { Authorization: token, 'Content-Type': 'application/json' } }).then(res => res.json())
+                const data = await getProjects(controller.signal)
                 console.log('result: ', data)
-            } catch (error) {
-                console.log(error)
+            } catch (error: unknown) {
+                const { message } = error as ApiError
+                console.log('error: ', message)
             }
         })();
         return function () {

@@ -15,11 +15,11 @@ function urlParams(path: URL, params?: Record<string, string | number>) {
   return baseUrl.toString()
 }
 
-const { fetch: originalFetch } = window;
-window.fetch = async (...[url, config]: Parameters<typeof originalFetch>): Promise<Response> => {
+type FetchType = <T>(url: string, config?: RequestInit) => Promise<T>;
+
+const fetchTypeResponse: FetchType = async <T,>(...[url, config]: Parameters<typeof originalFetch>): Promise<T> => {
   const token = localStorage.getItem('token')
-  console.log(urlParams(url as URL))
-  const response = await originalFetch(urlParams(url as URL), {
+  const response = await originalFetch(url, {
     ...(config || {}),
     headers: {
       'Accept': 'application/json', // TODO: CHANGE application/json when for file/download 
@@ -29,12 +29,13 @@ window.fetch = async (...[url, config]: Parameters<typeof originalFetch>): Promi
     }
   })
 
-  const data = await response.clone().json()
-
+  const data = await response.json()
   if (!(response.status >= 200 && response.status <= 205)) return Promise.reject(data)
-  response.json = () => data
-  return Promise.resolve(response);
+  return data;
 }
+
+const { fetch: originalFetch } = window;
+window.fetch = fetchTypeResponse as unknown as typeof originalFetch
 
 createRoot(document.getElementById('root')!).render(
   <ThemeProvider>
