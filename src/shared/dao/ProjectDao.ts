@@ -21,7 +21,7 @@ export const projectsDao = () => {
     }
 
     const getProject = async (id: string) => {
-        const { data } = await fetch<ProjectDao>(urlParams(`/projects${id ? ('/' + id) : ''}`))
+        const { data } = await fetch<ProjectDao>(urlParams(`/projects/${id}`))
         return data
     }
 

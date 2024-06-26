@@ -1,5 +1,6 @@
 import { useEffect } from 'react'
 import { projectsDao } from '../shared/dao/ProjectDao';
+import { Table } from '../shared/components';
 
 const { getProjects: getProjectsDao } = projectsDao()
 
@@ -23,6 +24,10 @@ export default function Dashboard() {
     }
 
     return (
-        <div>Dashboard</div>
+        <div>
+            {/* <button className="btn btn-primary">Primary</button> */}
+            <Table />
+        </div>
+
     )
 }

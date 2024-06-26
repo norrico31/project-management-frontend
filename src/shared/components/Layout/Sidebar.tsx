@@ -129,7 +129,7 @@ export default function Sidebar({ isTabletMid, open, setOpen }: Props) {
                 variants={Nav_animation}
                 initial={{ x: isTabletMid ? -250 : 0 }}
                 animate={open ? "open" : "closed"}
-                className="bg-white dark:bg-neutral-900 dark:text-white text-gray shadow-xl z-[999] overflow-hidden md:relative fixed h-screen "
+                className="bg-white dark:bg-gray-900 dark:text-white text-gray shadow-xl z-[999] overflow-hidden md:relative fixed h-screen "
             >
                 <div className="flex items-center gap-2.5 font-medium border-b py-3 border-slate-300  mx-3">
                     {/* <img
