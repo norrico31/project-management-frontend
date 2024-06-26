@@ -37,6 +37,6 @@ body {
   }
   
   .active {
-    @apply bg-blue-100 text-blue-600;
+    @apply bg-gray-100 text-gray-600 dark:bg-blue-100;
   }
 }

@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import Layout from './components/Layout/Layout';
+import _Layout from './components/Layout/_Layout';
 
 const Login = lazy(() => import('../pages/Login'))
 const Dashboard = lazy(() => import('../pages/Dashboard'))
@@ -23,7 +24,7 @@ export const routes = createBrowserRouter([
 	{
 		path: "/",
 		// loader: rootLoader,
-		element: <Layout />,
+		element: <_Layout />,
 		children: [
 			{
 				path: "",
