@@ -1,5 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
+import { MdAdd } from "react-icons/md";
 // import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 import { projectsDao } from '../shared/dao/ProjectDao';
@@ -28,18 +29,24 @@ export default function Dashboard() {
     }
     return (
         <div>
-            <h1 className='text-h1'>Projects</h1>
-            <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>Open Modal</button>
-            <div className="mb-4">
-                <label htmlFor="table-search" className="sr-only">Search</label>
-                <div className="relative mt-1">
-                    <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
-                        <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
-                            <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
-                        </svg>
+            <h1 className="heading-1">Projects</h1>
+            <div className="flex justify-between items-center">
+
+                <div className="mb-4">
+                    <label htmlFor="table-search" className="sr-only">Search</label>
+                    <div className="relative mt-1">
+                        <div className="absolute inset-y-0 rtl:inset-r-0 start-0 flex items-center ps-3 pointer-events-none">
+                            <svg className="w-4 h-4 text-gray-500 dark:text-gray-400" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 20 20">
+                                <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="m19 19-4-4m0-7A7 7 0 1 1 1 8a7 7 0 0 1 14 0Z" />
+                            </svg>
+                        </div>
+                        <input type="text" id="table-search" className="block p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items" />
                     </div>
-                    <input type="text" id="table-search" className="block p-3 ps-10 text-sm text-gray-900 border border-gray-300 rounded-lg w-80 bg-gray-50 focus:ring-blue-500 focus:border-blue-500 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500" placeholder="Search for items" />
                 </div>
+                <button className="btn create inline-flex items-center" onClick={() => setIsModalOpen(true)}>
+                    Create
+                    <MdAdd size={24} />
+                </button>
             </div>
             <Table />
             <Pagination />

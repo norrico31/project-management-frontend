@@ -1,5 +1,6 @@
 import React from 'react'
-
+import { FaRegTrashAlt, FaRegEdit } from "react-icons/fa";
+import { CiEdit, CiTrash } from "react-icons/ci";
 export default function Table() {
     return (
         <div className="overflow-x shadow-md sm:rounded-lg">
@@ -24,7 +25,7 @@ export default function Table() {
                         <th scope="col" className="px-6 py-3">
                             Price
                         </th>
-                        <th scope="col" className="px-6 py-3">
+                        <th scope="col" className="px-6 py-3 text-center">
                             Action
                         </th>
                     </tr>
@@ -49,8 +50,15 @@ export default function Table() {
                         <td className="px-6 py-4">
                             $2999
                         </td>
-                        <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                        <td className="px-6 py-4 flex gap-2  justify-center">
+                            <button className="btn primary inline-flex items-center gap-1">
+                                Edit
+                                <CiEdit size={24} />
+                            </button>
+                            <button className="btn danger inline-flex items-center gap-1">
+                                Delete
+                                <CiTrash size={24} />
+                            </button>
                         </td>
                     </tr>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -73,7 +81,7 @@ export default function Table() {
                             $1999
                         </td>
                         <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn primary">Edit</button>
                         </td>
                     </tr>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -96,7 +104,7 @@ export default function Table() {
                             $99
                         </td>
                         <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn primary">Edit</button>
                         </td>
                     </tr>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -119,7 +127,7 @@ export default function Table() {
                             $179
                         </td>
                         <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn primary">Edit</button>
                         </td>
                     </tr>
                     <tr className="bg-white border-b dark:bg-gray-800 dark:border-gray-700 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -142,7 +150,7 @@ export default function Table() {
                             $699
                         </td>
                         <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn primary">Edit</button>
                         </td>
                     </tr>
                     <tr className="bg-white dark:bg-gray-800 hover:bg-gray-50 dark:hover:bg-gray-600">
@@ -165,7 +173,7 @@ export default function Table() {
                             $3999
                         </td>
                         <td className="px-6 py-4">
-                            <button className="btn btn-primary">Edit</button>
+                            <button className="btn primary">Edit</button>
                         </td>
                     </tr>
                 </tbody>

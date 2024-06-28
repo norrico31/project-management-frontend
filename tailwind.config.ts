@@ -138,7 +138,7 @@ const config: Config = {
 					800: '#B44D12',
 					900: '#8D2B0B',
 				},
-				error: {
+				danger: {
 					50: '#FFE3E3',
 					100: '#FFBDBD',
 					200: '#FF9B9B',
