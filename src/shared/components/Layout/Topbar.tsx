@@ -1,5 +1,5 @@
 import { useThemeCtx } from '../../contexts/DarkMode'
-import { SunIcon, MoonIcon } from '@heroicons/react/24/outline'
+import { MdOutlineLightMode, MdOutlineDarkMode } from "react-icons/md";
 
 export default function Topbar({ onClick }: { onClick: () => void }) {
     const { theme, toggleTheme } = useThemeCtx()
@@ -14,9 +14,9 @@ export default function Topbar({ onClick }: { onClick: () => void }) {
             <button onClick={toggleTheme} className="inline-flex transition items-center p-2 text-sm text-gray-500 rounded-lg hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600">
                 <span className="sr-only">Toggle dark mode</span>
                 {theme ?
-                    <SunIcon className="h-6 w-6 text-white-500" aria-hidden="true" />
+                    <MdOutlineLightMode className="h-6 w-6 text-white-500" aria-hidden="true" />
                     :
-                    <MoonIcon className="h-6 w-6 text-white-500" aria-hidden="true" />
+                    <MdOutlineDarkMode className="h-6 w-6 text-white-500" aria-hidden="true" />
                 }
             </button>
         </header>

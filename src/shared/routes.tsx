@@ -7,7 +7,10 @@ import Layout from './components/Layout/Layout';
 
 const Login = lazy(() => import('../pages/Login'))
 const Dashboard = lazy(() => import('../pages/Dashboard'))
+const SystemSettings = lazy(() => import('../pages/system-settings/SystemSettings'))
+const AdminSettings = lazy(() => import('../pages/admin-settings/AdminSettings'))
 const Backlogs = lazy(() => import('../pages/Backlogs'))
+const Profile = lazy(() => import('../pages/Profile'))
 
 const Statuses = lazy(() => import('../pages/system-settings/Statuses'))
 const Devices = lazy(() => import('../pages/system-settings/Devices'))
@@ -31,12 +34,42 @@ export const routes = createBrowserRouter([
 				// loader: teamLoader,
 			},
 			{
+				path: "me",
+				element: <PromiseComponent element={<Profile />} />,
+			},
+			{
 				path: "backlogs",
 				element: <PromiseComponent element={<Backlogs />} />,
 			},
 			{
 				path: "system-settings",
-				// element: <PromiseComponent element={<Backlogs />} />,
+				element: <PromiseComponent element={<SystemSettings />} />,
+				children: [
+					{
+						path: "statuses",
+						element: <PromiseComponent element={<Statuses />} />,
+					},
+					{
+						path: "devices",
+						element: <PromiseComponent element={<Devices />} />,
+					},
+					{
+						path: "issue-types",
+						element: <PromiseComponent element={<IssueTypes />} />,
+					},
+					{
+						path: "schedules",
+						element: <PromiseComponent element={<Schedules />} />,
+					},
+					{
+						path: "severity-types",
+						element: <PromiseComponent element={<SeverityTypes />} />,
+					},
+				]
+			},
+			{
+				path: "admin-settings",
+				element: <PromiseComponent element={<AdminSettings />} />,
 				children: [
 					{
 						path: "statuses",

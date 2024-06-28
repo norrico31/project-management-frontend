@@ -1,6 +1,6 @@
 import { useState, useEffect } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
+// import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
 
 import { projectsDao } from '../shared/dao/ProjectDao';
 import { Table, Pagination } from '../shared/components';
@@ -28,6 +28,7 @@ export default function Dashboard() {
     }
     return (
         <div>
+            <h1 className='text-h1'>Projects</h1>
             <button className="btn btn-primary" onClick={() => setIsModalOpen(true)}>Open Modal</button>
             <div className="mb-4">
                 <label htmlFor="table-search" className="sr-only">Search</label>
@@ -64,9 +65,9 @@ function Modal({ open, onClose }: { open: boolean; onClose: () => void }) {
                 >
                     <div className="bg-white overflow-y-auto px-4 pb-4 pt-5 sm:p-6 sm:pb-4">
                         <div className="sm:flex sm:items-start">
-                            <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
+                            {/* <div className="mx-auto flex h-12 w-12 flex-shrink-0 items-center justify-center rounded-full bg-red-100 sm:mx-0 sm:h-10 sm:w-10">
                                 <ExclamationTriangleIcon className="h-6 w-6 text-red-600" aria-hidden="true" />
-                            </div>
+                            </div> */}
                             <div className="mt-3 text-center sm:ml-4 sm:mt-0 sm:text-left">
                                 <DialogTitle as="h3" className="text-base font-semibold leading-6 text-gray-900">
                                     Deactivate account
