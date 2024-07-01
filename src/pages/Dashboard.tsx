@@ -31,7 +31,6 @@ export default function Dashboard() {
         <div>
             <h1 className="heading-1">Projects</h1>
             <div className="flex justify-between items-center">
-
                 <div className="mb-4">
                     <label htmlFor="table-search" className="sr-only">Search</label>
                     <div className="relative mt-1">
