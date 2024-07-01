@@ -4,6 +4,7 @@ import {
 } from "react-router-dom";
 
 import Layout from './components/Layout/Layout';
+import { Loading } from "./components";
 
 const Login = lazy(() => import('../pages/Login'))
 const Dashboard = lazy(() => import('../pages/Dashboard'))
@@ -19,7 +20,7 @@ const Schedules = lazy(() => import('../pages/system-settings/Schedules'))
 const SeverityTypes = lazy(() => import('../pages/system-settings/SeverityTypes'))
 
 function PromiseComponent({ element }: { element: ReactNode }) {
-	return <Suspense fallback={<div />}>{element}</Suspense>
+	return <Suspense fallback={<Loading />}>{element}</Suspense>
 }
 
 export const routes = createBrowserRouter([
