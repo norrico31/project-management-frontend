@@ -1,15 +1,13 @@
 import { useState, useEffect } from 'react'
 import { Dialog, DialogBackdrop, DialogPanel, DialogTitle } from '@headlessui/react'
-import { Link } from 'react-router-dom';
+import { Link, } from 'react-router-dom';
+import { projectsDao } from '../../shared/dao/ProjectDao';
+import { Pagination } from '../../shared/components';
 import { MdAdd } from "react-icons/md";
-// import { ExclamationTriangleIcon } from '@heroicons/react/24/outline'
-
-import { projectsDao } from '../shared/dao/ProjectDao';
-import { Table, Pagination, Loading } from '../shared/components';
 
 const { getProjects: getProjectsDao } = projectsDao()
 
-export default function Dashboard() {
+export default function ProjectLists() {
     const [isModalOpen, setIsModalOpen] = useState(false)
     useEffect(() => {
         const controller = new AbortController();
@@ -33,7 +31,7 @@ export default function Dashboard() {
         <div>
             <h1 className="heading-1">Projects</h1>
             {/* <Loading /> */}
-            {/* <div className="flex justify-between items-center">
+            <div className="flex justify-between items-center">
                 <div className="mb-4">
                     <label htmlFor="table-search" className="sr-only">Search</label>
                     <div className="relative mt-1">
@@ -49,7 +47,7 @@ export default function Dashboard() {
                     Create
                     <MdAdd size={24} />
                 </button>
-            </div> */}
+            </div>
             <div className='grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-4 xl:grid-cols-5 2xl:grid-cols-7 gap-4 max-h-[600px] overflow-auto shadow-lg'>
                 {new Array(50).fill(null).map((_, i) => <ProjectCard key={i} idx={i} />)}
             </div>
@@ -57,7 +55,6 @@ export default function Dashboard() {
             <Pagination />
             <Modal open={isModalOpen} onClose={() => setIsModalOpen(false)} />
         </div>
-
     )
 }
 
@@ -72,7 +69,7 @@ function ProjectCard({ idx }: { idx: number }) {
             <p className="inline-flex font-medium items-center text-blue-600 hover:underline">
                 View
                 <svg className="w-3 h-3 ms-2.5 rtl:rotate-[270deg]" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 18 18">
-                    <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
+                    <path stroke="currentColor" strokeLinecap="round" strokeLinejoin="round" strokeWidth="2" d="M15 11v4.833A1.166 1.166 0 0 1 13.833 17H2.167A1.167 1.167 0 0 1 1 15.833V4.167A1.166 1.166 0 0 1 2.167 3h4.618m4.447-2H17v5.768M9.111 8.889l7.778-7.778" />
                 </svg>
             </p>
         </Link>

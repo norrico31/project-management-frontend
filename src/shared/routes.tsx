@@ -7,7 +7,8 @@ import Layout from './components/Layout/Layout';
 import { Loading } from "./components";
 
 const Login = lazy(() => import('../pages/Login'))
-const Dashboard = lazy(() => import('../pages/Dashboard'))
+const ProjectsLists = lazy(() => import('../pages/projects/ProjectLists'))
+const Settings = lazy(() => import('../pages/Settings'))
 const SystemSettings = lazy(() => import('../pages/system-settings/SystemSettings'))
 const AdminSettings = lazy(() => import('../pages/admin-settings/AdminSettings'))
 const Backlogs = lazy(() => import('../pages/Backlogs'))
@@ -31,7 +32,7 @@ export const routes = createBrowserRouter([
 		children: [
 			{
 				path: "",
-				element: <PromiseComponent element={<Dashboard />} />,
+				element: <PromiseComponent element={<ProjectsLists />} />,
 				// loader: teamLoader,
 			},
 			{
@@ -39,61 +40,75 @@ export const routes = createBrowserRouter([
 				element: <PromiseComponent element={<Profile />} />,
 			},
 			{
-				path: "backlogs",
-				element: <PromiseComponent element={<Backlogs />} />,
-			},
-			{
-				path: "system-settings",
-				element: <PromiseComponent element={<SystemSettings />} />,
+				path: "settings",
+				element: <PromiseComponent element={<Settings />} />,
 				children: [
 					{
-						path: "statuses",
-						element: <PromiseComponent element={<Statuses />} />,
+						path: "system",
+						element: <PromiseComponent element={<SystemSettings />} />,
 					},
 					{
-						path: "devices",
-						element: <PromiseComponent element={<Devices />} />,
-					},
-					{
-						path: "issue-types",
-						element: <PromiseComponent element={<IssueTypes />} />,
-					},
-					{
-						path: "schedules",
-						element: <PromiseComponent element={<Schedules />} />,
-					},
-					{
-						path: "severity-types",
-						element: <PromiseComponent element={<SeverityTypes />} />,
+						path: "admin",
+						element: <PromiseComponent element={<AdminSettings />} />,
 					},
 				]
 			},
-			{
-				path: "admin-settings",
-				element: <PromiseComponent element={<AdminSettings />} />,
-				children: [
-					{
-						path: "statuses",
-						element: <PromiseComponent element={<Statuses />} />,
-					},
-					{
-						path: "devices",
-						element: <PromiseComponent element={<Devices />} />,
-					},
-					{
-						path: "issue-types",
-						element: <PromiseComponent element={<IssueTypes />} />,
-					},
-					{
-						path: "schedules",
-						element: <PromiseComponent element={<Schedules />} />,
-					},
-					{
-						path: "severity-types",
-						element: <PromiseComponent element={<SeverityTypes />} />,
-					},
-				]
-			},
+			// {
+			// 	path: "backlogs",
+			// 	element: <PromiseComponent element={<Backlogs />} />,
+			// },
+			// {
+			// 	path: "system-settings",
+			// 	element: <PromiseComponent element={<SystemSettings />} />,
+			// 	children: [
+			// 		{
+			// 			path: "statuses",
+			// 			element: <PromiseComponent element={<Statuses />} />,
+			// 		},
+			// 		{
+			// 			path: "devices",
+			// 			element: <PromiseComponent element={<Devices />} />,
+			// 		},
+			// 		{
+			// 			path: "issue-types",
+			// 			element: <PromiseComponent element={<IssueTypes />} />,
+			// 		},
+			// 		{
+			// 			path: "schedules",
+			// 			element: <PromiseComponent element={<Schedules />} />,
+			// 		},
+			// 		{
+			// 			path: "severity-types",
+			// 			element: <PromiseComponent element={<SeverityTypes />} />,
+			// 		},
+			// 	]
+			// },
+			// {
+			// 	path: "admin-settings",
+			// 	element: <PromiseComponent element={<AdminSettings />} />,
+			// 	children: [
+			// 		{
+			// 			path: "statuses",
+			// 			element: <PromiseComponent element={<Statuses />} />,
+			// 		},
+			// 		{
+			// 			path: "devices",
+			// 			element: <PromiseComponent element={<Devices />} />,
+			// 		},
+			// 		{
+			// 			path: "issue-types",
+			// 			element: <PromiseComponent element={<IssueTypes />} />,
+			// 		},
+			// 		{
+			// 			path: "schedules",
+			// 			element: <PromiseComponent element={<Schedules />} />,
+			// 		},
+			// 		{
+			// 			path: "severity-types",
+			// 			element: <PromiseComponent element={<SeverityTypes />} />,
+			// 		},
+			// 	]
+			// },
 		],
 	},
 	{
